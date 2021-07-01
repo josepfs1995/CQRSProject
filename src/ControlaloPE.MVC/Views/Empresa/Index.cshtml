@@ -1,0 +1,19 @@
+@model IEnumerable<EmpresaViewModel>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Crear</h5>
+            </div>
+            <div class="card-body" id="divEmpresas">
+                <partial name="_Empresas" model="@Model"></partial>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        var urlObtenerEmpresas = '@Url.Action("ObtenerEmpresas", "Empresa")';
+    </script>
+   <script src="~/js/empresa/index.js" asp-append-version="true"></script>
+}

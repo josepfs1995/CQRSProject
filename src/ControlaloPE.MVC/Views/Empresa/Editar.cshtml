@@ -1,0 +1,36 @@
+@model EditarEmpresaViewModel
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+        <form method="post" asp-action="Editar" asp-controller="Empresa" asp-route-id_Empresa="@Model.Id_Empresa">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Editar</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="form-label">Nombre <span class="danger">*</span></label>
+                        <input type="text" asp-for="Nombre" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">RUC <span class="danger">*</span></label>
+                        <input type="text" asp-for="Ruc" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Logo <span class="danger">*</span></label>
+                        <input type="file" asp-for="LogoFile" class="form-control" />
+                    </div>
+                    <div class="">
+                        <img src="@(String.Format("/Empresas/{0}/{1}", Model.Id_Empresa, Model.Logo))" width="250" height="250"/>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <button class="btn btn-success">Editar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/empresa/editar.js" asp-append-version="true"></script>
+}

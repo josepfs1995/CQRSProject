@@ -1,0 +1,38 @@
+@model IEnumerable<EmpresaViewModel>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>RUC</th>
+            <th>Estado</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.Count() == 0){
+            <tr>
+                <td colspan="4">
+                    No existen empresas a tu nombre<br>
+                    <a asp-action="Crear" asp-controller="Empresa" class="btn btn-info">Crear Empresa</a>
+                </td>
+            </tr>
+        }
+        @foreach(var item in Model){
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Ruc</td>
+                <td>
+                    @Html.MostrarEstado(item.Estado)
+                </td>
+                <td>
+                    <form method="POST" asp-action="Eliminar" asp-controller="Empresa" asp-route-id="@item.Id_Empresa">
+                        <a class="btn btn-warning btn-sm" asp-action="Editar" asp-controller="Empresa" asp-route-id="@item.Id_Empresa">
+                            <i class="bi bi-pencil-square"></i> Editar
+                        </a>
+                        <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

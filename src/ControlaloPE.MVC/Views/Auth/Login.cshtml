@@ -1,0 +1,29 @@
+@model LoginUsuarioViewModel
+
+<vc:error></vc:error>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+        <form method="post">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Ingresar</h5>
+                    <label class="text-muted">Los campos * son obligatorios</label>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="form-label">Email <span class="danger">*</span></label>
+                        <input type="text" asp-for="Email" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" asp-for="Contrasena" class="form-control" />
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <button class="btn btn-success">Ingresar</button>
+                    <a asp-action="Registrar" asp-controller="Auth" class="btn btn-info">Registrar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

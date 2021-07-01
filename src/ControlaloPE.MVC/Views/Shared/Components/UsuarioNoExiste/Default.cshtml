@@ -1,0 +1,7 @@
+@model PersonaViewModel
+
+@if(Model == null){
+    <div class="alert alert-danger" role="alert">
+        Por favor, completar datos de usuario para empezar en el sistema. <a asp-action="Crear" asp-controller="Persona">Crear aca</a>
+    </div>
+}

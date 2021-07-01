@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@inject IUserManager _userManager
+<vc:usuario-no-existe></vc:usuario-no-existe>
+<div class="text-center">
+    <h1 class="display-4">Welcome @_userManager.Nombre</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <a class="btn btn-info" asp-action="Index" asp-controller="Empresa">Ver mis empresas</a>
+</div>

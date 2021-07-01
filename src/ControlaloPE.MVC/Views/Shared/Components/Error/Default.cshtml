@@ -1,0 +1,10 @@
+@if(ViewData.ModelState.ErrorCount > 0)
+{
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach(var error in ViewData.ModelState.SelectMany(x=>x.Value.Errors).ToList()){
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
