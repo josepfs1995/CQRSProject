@@ -10,16 +10,8 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: AzureResourceManagerTemplateDeployment@3
+- task: DotNetCoreCLI@2
   inputs:
-    deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'Test'
-    subscriptionId: 'bdb98696-f355-4100-844f-65fcc0349bad'
-    action: 'Create Or Update Resource Group'
-    resourceGroupName: 'PipelineTest'
-    location: 'East US'
-    templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/josepfs1995/CQRSProject/main/pipeline/azuredeploy.json'
-    overrideParameters: '-projectName cqrsproject'
-    deploymentMode: 'Incremental'
-    deploymentName: 'DeployPipelineTemplate'
+    command: 'publish'
+    publishWebProjects: true
+    workingDirectory: 'DeployPipelineTemplate'
