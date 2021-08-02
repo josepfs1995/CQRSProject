@@ -10,8 +10,22 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: DotNetCoreCLI@2
+- task: UseDotNet@2
+  displayName: 'Install net5.0'
   inputs:
-    command: 'publish'
-    publishWebProjects: true
-    workingDirectory: 'DeployPipelineTemplate'
+    packageType: 'sdk'
+    version: '5.0'
+
+- task: DotNetCoreCLI@2
+  displayName: '.NET Core - Restore packages'
+  inputs:
+    command: 'restore'
+    projects: './src'
+    feedsToUse: 'select'
+
+- task: DotNetCoreCLI@2
+  displayName: '.NET Core - Build'
+  inputs:
+    command: 'build'
+    projects: './src'
+    arguments: '-c $(buildConfiguration) --no-restore'
