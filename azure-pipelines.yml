@@ -9,12 +9,18 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
 steps:
+
 - task: UseDotNet@2
-  displayName: 'Install net5.0'
+  displayName: 'Install .net core 3.1'
   inputs:
     packageType: 'sdk'
-    version: '5.0'
+    version: '3.1.100'
 
 - task: DotNetCoreCLI@2
   displayName: '.NET Core - Restore packages'
@@ -28,4 +34,3 @@ steps:
   inputs:
     command: 'build'
     projects: './src'
-    arguments: '-c $(buildConfiguration) --no-restore'
